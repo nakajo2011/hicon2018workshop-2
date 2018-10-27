@@ -1,0 +1,29 @@
+{
+  "name": "hicon2018workshop-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakajo2011/hicon2018workshop-2.git"
+  },
+  "author": "Yukishige Nakajo <nakajo@chaintope.com> (http://y-nakajo.hatenablog.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nakajo2011/hicon2018workshop-2/issues"
+  },
+  "homepage": "https://github.com/nakajo2011/hicon2018workshop-2#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "lk-test-helpers": "^0.1.7"
+  },
+  "babel" : {
+    "presets": ["env"]
+  }
+}
