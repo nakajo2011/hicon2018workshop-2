@@ -23,7 +23,9 @@
     "babel-register": "^6.26.0",
     "lk-test-helpers": "^0.1.7"
   },
-  "babel" : {
-    "presets": ["env"]
+  "babel": {
+    "presets": [
+      "env"
+    ]
   }
 }
