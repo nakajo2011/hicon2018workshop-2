@@ -1,4 +1,5 @@
-import lkTestHelpers  from 'lk-test-helpers'
+import lkTestHelpers from 'lk-test-helpers'
+
 const {
   shouldFail
 } = lkTestHelpers(web3)
@@ -23,7 +24,18 @@ contract('PrivateStorage', (accounts) => {
     } catch (e) {
       // not recommend. it has a little dangerous.
       // if you change line:22 to same as line:14, then test is fail. is it ensure?
-      // TODO: modify to using shouldFail.reverting. e.g) await shouldFail.reverting(someMethod())
+      // TODO: step1 modify to using shouldFail.reverting. e.g) await shouldFail.reverting(someMethod())
+      assert.isOk(e)
+    }
+  })
+
+  it("fail test. out of gas.", async () => {
+    const private_storage = await PrivateStorage.new()
+    try {
+      await private_storage.heavyCostSet(100, {gas: 1000000})
+      assert.fail("it must be fail.")
+    } catch (e) {
+      // TODO: step2 this is dengerous too. please modify to correctly.
       assert.isOk(e)
     }
   })

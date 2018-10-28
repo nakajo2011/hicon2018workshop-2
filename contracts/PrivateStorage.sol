@@ -9,6 +9,7 @@ pragma solidity ^0.4.24;
 contract PrivateStorage {
   address public owner;
   uint storedData;
+  uint[] public arrayStorage;
 
   modifier onlyOwner() {
     require(msg.sender == owner);
@@ -25,5 +26,11 @@ contract PrivateStorage {
 
   function get() public view returns (uint) {
     return storedData;
+  }
+
+  function heavyCostSet(uint copyValue) public {
+    for(uint i=0; i<100; i++) {
+      arrayStorage.push(copyValue);
+    }
   }
 }
