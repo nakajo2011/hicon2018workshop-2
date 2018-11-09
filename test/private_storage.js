@@ -18,25 +18,11 @@ contract('PrivateStorage', (accounts) => {
   })
   it("fail test. set is only owner command.", async () => {
     const private_storage = await PrivateStorage.new()
-    try {
-      await private_storage.set(3, {from: accounts[1]})
-      assert.fail("it must be fail.")
-    } catch (e) {
-      // not recommend. it has a little dangerous.
-      // if you change line:22 to same as line:14, then test is fail. is it ensure?
-      // TODO: step1 modify to using shouldFail.reverting. e.g) await shouldFail.reverting(someMethod())
-      assert.isOk(e)
-    }
+    await shouldFail.reverting(private_storage.set(3, {from: accounts[1]}))
   })
 
   it("fail test. out of gas.", async () => {
     const private_storage = await PrivateStorage.new()
-    try {
-      await private_storage.heavyCostSet(100, {gas: 1000000})
-      assert.fail("it must be fail.")
-    } catch (e) {
-      // TODO: step2 this is dengerous too. please modify to correctly.
-      assert.isOk(e)
-    }
+    await shouldFail.outOfGas(private_storage.heavyCostSet(100, {gas: 1000000}))
   })
 })
